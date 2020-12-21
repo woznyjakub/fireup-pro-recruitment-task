@@ -1,5 +1,27 @@
 @import './bootstrap';
 
+@font-face {
+  font-family: 'Lato';
+  font-weight: 300;
+  src: url('/assets/fonts/Lato-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-weight: 400;
+  src: url('/assets/fonts/Lato-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-weight: 400;
+  font-style: italic;
+  src: url('/assets/fonts/Lato-Regular-Italic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-weight: 900;
+  src: url('/assets/fonts/Lato-Black.ttf') format('truetype');
+}
+
 html,
 body {
   padding: 0;
