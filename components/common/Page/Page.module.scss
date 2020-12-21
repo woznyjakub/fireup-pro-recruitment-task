@@ -1,0 +1,8 @@
+@import '../../../styles/mixins';
+
+.pageWrapper {
+  // height 100% on html, body, #__next is required for this to work
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
