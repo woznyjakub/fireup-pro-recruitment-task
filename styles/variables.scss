@@ -7,3 +7,38 @@ $grid-breakpoints: (
   xl: 1400px,
   xxl: 1750px,
 );
+
+$container-max-widths: (
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+);
+
+// spacer is the value of bootstrap classes like py-3, mx-3, pl-md-3
+// classes with numbers:
+//  - 1 are 0.25 of it
+//  - 2 are 0.5 of it
+//  - 4 are 1.5 of it
+//  - 5 are 2 of it
+$spacer: 2.5rem;
+$spacers: (
+  0: 0,
+  1: (
+    // 10px
+    $spacer * 0.25,
+  ),
+  2: (
+    // 20px
+    $spacer * 0.5,
+  ),
+  // 40px
+  3: $spacer,
+  4: (
+    // 60px
+    $spacer * 1.5,
+  ),
+  5: (
+    // 70px
+    $spacer * 1.75,
+  ),
+);
