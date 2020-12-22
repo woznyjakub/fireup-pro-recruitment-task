@@ -2,6 +2,7 @@ import SwiperCore, { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Section } from '@components/common/Section';
 
+import { FC, useState, useCallback } from 'react';
 import styles from './MainHeader.module.scss';
 
 const content = {
@@ -43,15 +44,24 @@ const content = {
 
 SwiperCore.use([Pagination]);
 
-export const MainHeader: React.FC = () => {
+export const MainHeader: FC = () => {
   const {
     sliderData: { slides, iconTiles },
   } = content;
 
+  const [activeSlideId, setAcitveSlideId] = useState<number>(0);
+
+  const handleSlideChange = useCallback(
+    ({ activeIndex }) => {
+      setAcitveSlideId(activeIndex);
+    },
+    [activeSlideId],
+  );
+
   return (
     <header>
       {slides.length && (
-        <Swiper slidesPerView={1}>
+        <Swiper slidesPerView={1} onSlideChange={handleSlideChange} className={styles.slider}>
           {slides.map(({ title, imageUrl, textColor }, i) => {
             const isFirst = i === 0;
             const Heading = isFirst ? 'h1' : 'h2';
@@ -67,10 +77,12 @@ export const MainHeader: React.FC = () => {
             );
           })}
           {iconTiles.length && (
-            <ul className={[styles.iconTilesWrapper, 'container', 'list-unstyled'].join(' ')}>
-              {iconTiles.map(({ label, iconUrl, bgColor }) => {
+            <ul className={[styles.iconTilesWrapper, 'container', 'list-unstyled', 'pb-3', 'pb-md-4', 'pb-lg-5'].join(' ')}>
+              {iconTiles.map(({ label, iconUrl, bgColor }, i) => {
+                const isActive = i === activeSlideId;
+
                 return (
-                  <li key={label} className={styles.iconTile}>
+                  <li key={label} className={[styles.iconTile, isActive ? styles.iconTileActive : ''].join(' ')}>
                     <figure className={styles.iconTileInternalWrapper}>
                       <div className={styles.iconTileImageWrapper}>
                         <img src={iconUrl} alt={label} />
