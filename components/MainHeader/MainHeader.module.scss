@@ -1,0 +1,78 @@
+@import '../../styles/mixins';
+
+.heading {
+  font-size: 2.125rem;
+  font-weight: 900;
+  text-align: center;
+  line-height: 1.3;
+  word-spacing: 2px;
+}
+.wrapper {
+  min-height: 410px;
+  padding: 1rem 0 0.5rem;
+}
+.iconTilesWrapper {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.iconTile {
+  margin-bottom: 1rem;
+}
+.iconTileImageWrapper {
+  display: none;
+}
+.iconTileText {
+  display: block;
+  width: 100%;
+  max-width: 230px;
+  padding: 0.75rem 0.5rem;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: $white;
+}
+
+@include media-breakpoint-up(md) {
+  .heading {
+    font-size: 4.25rem;
+  }
+  .wrapper {
+    min-height: 510px;
+    padding: 0;
+  }
+  .iconTilesWrapper {
+    display: flex;
+  }
+  .iconTile {
+    display: flex;
+    align-items: center;
+    width: calc(100% / 3);
+  }
+  .iconTileInternalWrapper {
+    width: 100%;
+    padding: 0 0.5rem;
+  }
+  .iconTileImageWrapper {
+    display: block;
+    text-align: center;
+  }
+  .iconTileText {
+    margin: 0;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .wrapper {
+    min-height: 650px;
+    padding: 2.5rem 0 2rem;
+  }
+  .iconTileInternalWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

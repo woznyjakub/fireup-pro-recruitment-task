@@ -7,12 +7,12 @@ interface IPageProps {
   Footer?: ComponentType;
 }
 
-export const Page: FC<IPageProps> = ({ children, Header, Footer = <DefaultFooter /> }) => {
+export const Page: FC<IPageProps> = ({ children, Header, Footer = DefaultFooter }) => {
   return (
     <div className={styles.pageWrapper}>
-      {Header}
+      {Header && <Header />}
       <main>{children}</main>
-      {Footer}
+      <Footer />
     </div>
   );
 };
