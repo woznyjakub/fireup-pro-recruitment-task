@@ -15,11 +15,6 @@ $container-max-widths: (
 );
 
 // spacer is the value of bootstrap classes like py-3, mx-3, pl-md-3
-// classes with numbers:
-//  - 1 are 0.25 of it
-//  - 2 are 0.5 of it
-//  - 4 are 1.5 of it
-//  - 5 are 2 of it
 $spacer: 2.5rem;
 $spacers: (
   0: 0,
@@ -42,3 +37,27 @@ $spacers: (
     $spacer * 1.75,
   ),
 );
+
+// colors
+$colors: (
+  white: #fff,
+  grey-1: #333,
+  grey-2: #f1f1f1,
+  grey-3: #f3f3f3,
+  black: #000,
+  red: #c43434,
+  orange: #faad81,
+  pink: #e5b6e7,
+  lightblue: #7ec8ea,
+  blue: #428e9e,
+  darkblue: #1883b4,
+  paleblue: #8393ca,
+  green: #508b61,
+  mint: #a3d49c,
+  yellow: dfbb42,
+);
+
+// @example: background-color: color(lightgrey-2);
+@function color($color) {
+  @return map-get($colors, $color);
+}

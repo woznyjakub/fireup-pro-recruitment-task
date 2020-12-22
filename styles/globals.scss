@@ -1,4 +1,5 @@
 @import './bootstrap';
+@import '../node_modules/swiper/swiper';
 
 @font-face {
   font-family: 'Lato';
@@ -22,6 +23,20 @@
   src: url('/assets/fonts/Lato-Black.ttf') format('truetype');
 }
 
+@each $color, $value in $colors {
+  .bg-#{'' + $color} {
+    background-color: #{$value};
+    --bg-color: #{$value}; // helper variable for text-shadow etc.
+  }
+  .color-#{'' + $color} {
+    color: #{$value};
+  }
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
 html,
 body {
   padding: 0;
@@ -41,8 +56,22 @@ a {
   text-decoration: none;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+.fw {
+  &-light {
+    font-weight: 300;
+  }
+  &-normal {
+    font-weight: 400;
+  }
+  &-black {
+    font-weight: 900;
+  }
 }
 
 // visible only to readers
