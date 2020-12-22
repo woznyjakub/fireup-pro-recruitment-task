@@ -9,7 +9,7 @@ $grid-breakpoints: (
 );
 
 $container-max-widths: (
-  md: 720px,
+  md: 746px,
   lg: 960px,
   xl: 1140px,
 );
@@ -39,25 +39,44 @@ $spacers: (
 );
 
 // colors
+
+// this is temporarily mapped twice because the map getter function below doesn't worked properly
+$white: #fff;
+$grey-1: #333;
+$grey-2: #f1f1f1;
+$grey-3: #f3f3f3;
+$black: #000;
+$red: #c43434;
+$orange: #faad81;
+$pink: #e5b6e7;
+$lightblue: #7ec8ea;
+$blue: #428e9e;
+$darkblue: #1883b4;
+$paleblue: #8393ca;
+$green: #508b61;
+$mint: #a3d49c;
+$yellow: #dfbb42;
+
 $colors: (
-  white: #fff,
-  grey-1: #333,
-  grey-2: #f1f1f1,
-  grey-3: #f3f3f3,
-  black: #000,
-  red: #c43434,
-  orange: #faad81,
-  pink: #e5b6e7,
-  lightblue: #7ec8ea,
-  blue: #428e9e,
-  darkblue: #1883b4,
-  paleblue: #8393ca,
-  green: #508b61,
-  mint: #a3d49c,
-  yellow: dfbb42,
+  white: $white,
+  grey-1: $grey-1,
+  grey-2: $grey-2,
+  grey-3: $grey-3,
+  black: $black,
+  red: $red,
+  orange: $orange,
+  pink: $pink,
+  lightblue: $lightblue,
+  blue: $blue,
+  darkblue: $darkblue,
+  paleblue: $paleblue,
+  green: $green,
+  mint: $mint,
+  yellow: $yellow,
 );
 
-// @example: background-color: color(lightgrey-2);
+// I wanted to use this function but it doesn't work in scss modules here
+// (even when it was call like `color: #{color(orange)};`, the result was invalid css `color: color(orange);`)
 @function color($color) {
   @return map-get($colors, $color);
 }
