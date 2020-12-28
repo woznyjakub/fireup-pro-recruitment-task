@@ -1,0 +1,114 @@
+@import '../../styles/mixins';
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1.25rem;
+}
+
+.listItem {
+  position: relative;
+  background-color: $white;
+  border-top: 0.625rem solid currentColor;
+  padding: 0.875rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.imageWrapper {
+  overflow: hidden;
+  background-color: currentColor;
+  min-width: 50%; // this prevents image shrinkage when there is too much text in box label
+
+  &.angular {
+    --notchSize: 2rem;
+
+    clip-path: polygon(
+      0% var(--notchSize),
+      var(--notchSize) 0%,
+      calc(100% - var(--notchSize)) 0%,
+      100% var(--notchSize),
+      100% calc(100% - var(--notchSize)),
+      calc(100% - var(--notchSize)) 100%,
+      var(--notchSize) 100%,
+      0% calc(100% - var(--notchSize))
+    );
+  }
+  &.round {
+    border-radius: 50%;
+  }
+}
+
+.label {
+  font-size: 1.125rem;
+  line-height: 2;
+  font-weight: 300;
+}
+@include media-breakpoint-between(0, md) {
+  .labelWrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .label {
+    background-color: rgba($white, 0.8);
+    font-size: 1.125rem;
+    line-height: 2;
+  }
+  .labelColorWrapper {
+    // this is temporary - the element is using currentColor variable now and its hard
+    // to provide here the darkened color now
+    // unfortynately filter needs to be in separated <span> element to prevent changing background color
+    filter: brightness(0.8) saturate(2);
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .itemInternalWrapper {
+    display: flex;
+    align-items: center;
+    min-height: 182px; // this is caused by using colums-count on tablet size screens
+  }
+  .labelWrapper {
+    min-width: 50%;
+    padding: 1rem;
+  }
+  .label {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
+}
+
+@include media-breakpoint-between(md, lg) {
+  // change items order only for tablets
+  .list {
+    display: block;
+    column-count: 2;
+    column-gap: 1.25rem;
+  }
+  .listItem {
+    margin-bottom: 1.25rem;
+    @include break-inside(avoid);
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1.875rem;
+  }
+  .itemInternalWrapper {
+    flex-direction: column;
+  }
+  .imageWrapper {
+    &.round {
+      margin: 2rem 0 1.5rem;
+    }
+  }
+  .label {
+    font-size: 2.125rem;
+  }
+}
