@@ -1,4 +1,3 @@
-import SwiperCore, { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Section } from '@components/common/Section';
 
@@ -41,8 +40,6 @@ const content = {
     ],
   },
 };
-
-SwiperCore.use([Pagination]);
 
 export const MainHeader: FC = () => {
   const {
