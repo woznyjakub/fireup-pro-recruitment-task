@@ -64,7 +64,7 @@
   .labelColorWrapper {
     // this is temporary - the element is using currentColor variable now and its hard
     // to provide here the darkened color now
-    // unfortynately filter needs to be in separated <span> element to prevent changing background color
+    // unfortynately filter needs to be in separated <span> element to block its impact on background color
     filter: brightness(0.8) saturate(2);
   }
 }
@@ -76,8 +76,12 @@
     min-height: 182px; // this is caused by using colums-count on tablet size screens
   }
   .labelWrapper {
-    min-width: 50%;
     padding: 1rem;
+    min-width: 50%;
+    min-height: 134px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .label {
     font-size: 1.5rem;
