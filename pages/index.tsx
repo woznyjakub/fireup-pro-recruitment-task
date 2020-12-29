@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { Page } from '@components/common/Page';
 import { MainHeader } from '@components/MainHeader';
 import { Section } from '@components/common/Section';
-import Gallery from '@components/Gallery/Gallery';
+import { Gallery } from '@components/Gallery/';
 
 const Home: React.FC = () => {
   return (

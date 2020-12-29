@@ -58,7 +58,7 @@ export interface GalleryProps {
   className?: string;
 }
 
-const Gallery: React.FC<GalleryProps> = ({ className }) => {
+export const Gallery: React.FC<GalleryProps> = ({ className }) => {
   const { items } = content;
   return (
     <div className={className}>
@@ -105,5 +105,3 @@ const Gallery: React.FC<GalleryProps> = ({ className }) => {
     </div>
   );
 };
-
-export default Gallery;
