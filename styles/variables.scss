@@ -1,4 +1,6 @@
 // bootstrap 5 config variables
+$grid-columns: 24;
+
 $grid-breakpoints: (
   xs: 0,
   sm: 530px,
@@ -9,8 +11,8 @@ $grid-breakpoints: (
 );
 
 $container-max-widths: (
-  md: 746px,
-  lg: 1140px,
+  md: 754px,
+  lg: 1170px,
 );
 
 // spacer is the value of bootstrap classes like py-3, mx-3, pl-md-3

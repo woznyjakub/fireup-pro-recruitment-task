@@ -1,0 +1,135 @@
+@import '../../styles/mixins';
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  --rotation: 57deg;
+
+  &::after {
+    // origin on right bottom
+    content: '';
+    position: absolute;
+    left: -50%;
+    right: 0;
+    top: -50%;
+    bottom: 0;
+    transform: rotate(calc(var(--rotation) * -1));
+    transform-origin: 100% 100%;
+    background-color: rgba($white, 0.8);
+    z-index: 1;
+  }
+  &.odd {
+    &::after {
+      // origin on right top
+      top: 0;
+      bottom: -50%;
+      transform-origin: 100% 0%;
+      transform: rotate(var(--rotation));
+    }
+  }
+}
+
+.titleWrapper {
+  background-color: $lightblue;
+  padding: 1rem;
+}
+.title {
+  display: flex;
+  align-items: center;
+  font-size: 2.25rem;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 10px;
+  .icon {
+    margin-right: 0.5rem;
+  }
+}
+.contentWrapper {
+  padding: 1rem #{$grid-gutter-width / 2};
+}
+.list {
+  counter-reset: featured-tile-counter;
+}
+.listItem {
+  counter-increment: featured-tile-counter;
+  display: flex;
+  margin-bottom: 0.75rem;
+  font-size: 0.875em;
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &::before {
+    content: counter(featured-tile-counter) '.';
+    margin-right: 0.25rem;
+    font-size: 0.875rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .imageWrapper {
+    --rotation: 30deg;
+
+    &::after {
+      // origin on left center of ::after element and center center of .imageWrapper
+      left: 50%;
+      right: -100%;
+      top: -50%;
+      bottom: -50%;
+      transform-origin: 0% 50%;
+    }
+    &.odd {
+      &::after {
+        // origin on right center of ::after element and center center of .imageWrapper
+        left: -100%;
+        right: 50%;
+        top: -50%;
+        transform-origin: 100% 50%;
+      }
+    }
+  }
+  .title {
+    font-size: 3rem;
+  }
+  .contentWrapper {
+    padding-top: 1.75rem;
+    padding-bottom: 2.5rem;
+  }
+  .listItem {
+    margin-bottom: 1.75rem;
+    &::before {
+      content: counter(featured-tile-counter); // without dot
+      margin-right: 1rem;
+      font-size: 2.25rem;
+      border-bottom: 8px solid $blue;
+      min-width: 60px;
+      text-align: center;
+      line-height: 1.2;
+    }
+  }
+  .listItemContent {
+    margin-top: 1.5rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .imageWrapper {
+    --rotation: 28.5deg;
+    &::after {
+      transform: rotate(var(--rotation));
+    }
+    &.odd {
+      &::after {
+        transform: rotate(calc(var(--rotation) * -1));
+      }
+    }
+  }
+  .contentWrapper {
+    padding-left: $grid-gutter-width;
+    padding-right: $grid-gutter-width;
+    padding-bottom: 1.75rem;
+  }
+  .listItemContent {
+    margin-top: 0;
+  }
+}
