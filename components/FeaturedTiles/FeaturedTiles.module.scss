@@ -18,7 +18,7 @@
     background-color: rgba($white, 0.8);
     z-index: 1;
   }
-  &.odd {
+  &.even {
     &::after {
       // origin on right top
       top: 0;
@@ -65,6 +65,28 @@
     font-size: 0.875rem;
   }
 }
+.listItemContent {
+  line-height: 1.25;
+}
+
+.arrow {
+  position: absolute;
+  left: 1rem;
+  bottom: 0;
+  z-index: 2;
+  font-weight: 300;
+  font-size: 160px;
+  line-height: 1;
+  overflow: hidden;
+  &.even {
+    top: 0;
+    bottom: auto;
+  }
+  span {
+    display: block;
+    transform: translateY(-10%);
+  }
+}
 
 @include media-breakpoint-up(md) {
   .imageWrapper {
@@ -78,7 +100,7 @@
       bottom: -50%;
       transform-origin: 0% 50%;
     }
-    &.odd {
+    &.even {
       &::after {
         // origin on right center of ::after element and center center of .imageWrapper
         left: -100%;
@@ -110,6 +132,18 @@
   .listItemContent {
     margin-top: 1.5rem;
   }
+  .arrow {
+    font-size: 200px;
+    left: auto;
+    right: 1rem;
+    top: -1.5rem;
+    bottom: auto;
+    &.even {
+      left: 1rem;
+      right: auto;
+      top: -1.5rem;
+    }
+  }
 }
 
 @include media-breakpoint-up(lg) {
@@ -118,7 +152,7 @@
     &::after {
       transform: rotate(var(--rotation));
     }
-    &.odd {
+    &.even {
       &::after {
         transform: rotate(calc(var(--rotation) * -1));
       }
@@ -131,5 +165,13 @@
   }
   .listItemContent {
     margin-top: 0;
+  }
+  .arrow {
+    top: auto;
+    bottom: -1.5rem;
+    &.even {
+      top: auto;
+      bottom: -1.5rem;
+    }
   }
 }

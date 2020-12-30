@@ -77,11 +77,15 @@ export const FeaturedTiles: React.FC = () => {
               altText,
             },
           ];
+          const isEven = (i + 1) % 2 === 0;
 
           return (
-            <div className="col-md-12 col-lg-7 mb-2 mb-md-4 mb-lg-0">
-              <figure className={[styles.imageWrapper, i % 2 !== 0 ? styles.odd : styles.even].join(' ')}>
+            <div className="col-md-12 col-lg-7 mb-2 mb-md-4 mb-lg-0" key={imageUrls.desktop}>
+              <figure className={[styles.imageWrapper, isEven ? styles.even : styles.odd].join(' ')}>
                 <Picture images={images} className={[styles.image, 'img-stretched'].join(' ')} />
+                <div className={[styles.arrow, isEven ? styles.even : styles.odd].join(' ')}>
+                  <span>{isEven ? '«' : '»'}</span>
+                </div>
               </figure>
             </div>
           );
@@ -90,7 +94,7 @@ export const FeaturedTiles: React.FC = () => {
       {textTiles &&
         textTiles.map(({ titleIconUrl, title, listContent }) => {
           return (
-            <div className="col-lg-10 d-flex pt-2 pt-md-0">
+            <div className="col-lg-10 d-flex pt-2 pt-md-0" key={title}>
               <div className="bg-white">
                 <div className={styles.titleWrapper}>
                   <h3 className={styles.title}>
@@ -101,9 +105,9 @@ export const FeaturedTiles: React.FC = () => {
                 {listContent && (
                   <div className={styles.contentWrapper}>
                     <ul className={styles.list}>
-                      {listContent.map(({ text }) => {
+                      {listContent.map(({ text }, i) => {
                         return (
-                          <li className={styles.listItem}>
+                          <li className={styles.listItem} key={i}>
                             <div className={styles.listItemContent}>
                               <p>{text}</p>
                             </div>
