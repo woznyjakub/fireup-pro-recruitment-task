@@ -1,65 +1,29 @@
 import styles from './Gallery.module.scss';
 import { breakpoints } from '@utils/breakpoints';
 import { Picture } from '@utils/Picture';
-import { PictureElement } from '@entities/picture';
+import { IPictureElement } from '@entities/picture';
 
-const content = {
-  items: [
-    {
-      id: 0,
-      type: 'angular',
-      color: 'lightblue',
-      imageUrls: {
-        phone: '/assets/images/gallery-1-phone.jpg',
-        tablet: '/assets/images/gallery-1-tablet.jpg',
-        desktop: '/assets/images/gallery-1-desktop.jpg',
-        original: '/assets/images/gallery-1-original.jpg',
-      },
-    },
-    {
-      id: 1,
-      type: 'angular',
-      color: 'orange',
-      imageUrls: {
-        phone: '/assets/images/gallery-2-phone.jpg',
-        tablet: '/assets/images/gallery-2-tablet.jpg',
-        desktop: '/assets/images/gallery-2-desktop.jpg',
-        original: '/assets/images/gallery-2-original.jpg',
-      },
-    },
-    {
-      id: 2,
-      type: 'round',
-      color: 'mint',
-      imageUrls: {
-        phone: '/assets/images/gallery-3-phone.jpg',
-        tablet: '/assets/images/gallery-3-tablet.jpg',
-        desktop: '/assets/images/gallery-3-desktop.jpg',
-        original: '/assets/images/gallery-3-original.jpg',
-      },
-      label: 'BOX CAPTION',
-    },
-    {
-      id: 3,
-      type: 'round',
-      color: 'pink',
-      imageUrls: {
-        phone: '/assets/images/gallery-4-phone.jpg',
-        tablet: '/assets/images/gallery-4-tablet.jpg',
-        desktop: '/assets/images/gallery-4-desktop.jpg',
-        original: '/assets/images/gallery-4-original.jpg',
-      },
-      label: 'BOX CAPTION',
-    },
-  ],
-};
-
-export interface GalleryProps {
+interface IGalleryProps {
   className?: string;
+  content: {
+    items: Array<{
+      id: number;
+      type: string;
+      color: string;
+      label?: string;
+      imageUrls: {
+        phone: string;
+        tablet: string;
+        desktop: string;
+        original: string;
+      };
+    }>;
+  };
 }
 
-export const Gallery: React.FC<GalleryProps> = ({ className }) => {
+export const Gallery: React.FC<IGalleryProps> = ({ className, content }) => {
   const { items } = content;
+
   return (
     <div className={className}>
       {items.length && (
@@ -67,7 +31,7 @@ export const Gallery: React.FC<GalleryProps> = ({ className }) => {
           {items.map(({ id, type, color, imageUrls, label }) => {
             const itemColor = color && `color-${color}`;
 
-            const imagesData: PictureElement[] = [
+            const imagesData: IPictureElement[] = [
               {
                 breakpoint: breakpoints.xs,
                 url: imageUrls.phone,

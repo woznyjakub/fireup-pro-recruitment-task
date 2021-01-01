@@ -1,12 +1,12 @@
 import { FC, Fragment } from 'react';
-import { PictureElement } from '@entities/picture';
+import { IPictureElement } from '@entities/picture';
 
-export interface PictureProps {
-  images: PictureElement[];
+export interface IPictureProps {
+  images: IPictureElement[];
   className?: string;
 }
 
-export const Picture: FC<PictureProps> = ({ images, className }) => {
+export const Picture: FC<IPictureProps> = ({ images, className }) => {
   images.sort((a, b) => b.breakpoint - a.breakpoint);
 
   return (

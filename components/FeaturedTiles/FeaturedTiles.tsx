@@ -1,68 +1,35 @@
 import styles from './FeaturedTiles.module.scss';
 import { Picture } from '@utils/Picture';
 import { breakpoints } from '@utils/breakpoints';
-import { PictureElement } from '@entities/picture';
+import { IPictureElement } from '@entities/picture';
 
-const content = {
-  photoTiles: [
-    {
+export interface IFeaturedTilesProps {
+  content: {
+    photoTiles: Array<{
       imageUrls: {
-        phone: '/assets/images/eiffel-tower-phone.jpg',
-        tablet: '/assets/images/eiffel-tower-tablet.jpg',
-        desktop: '/assets/images/eiffel-tower-desktop.jpg',
-      },
-      altText: 'Eiffel Tower',
-    },
-    {
-      imageUrls: {
-        phone: '/assets/images/statue-of-liberty-phone.jpg',
-        tablet: '/assets/images/statue-of-liberty-tablet.jpg',
-        desktop: '/assets/images/statue-of-liberty-desktop.jpg',
-      },
-      altText: 'Statue of Liberty',
-    },
-  ],
-  textTiles: [
-    {
-      title: 'Title',
-      titleIconUrl: '/assets/images/edit.png',
-      listContent: [
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac neque bibendum, vehicula ipsum et, tincidunt ligula.',
-        },
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac neque bibendum, vehicula ipsum et, tincidunt ligula.',
-        },
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac neque bibendum, vehicula ipsum et, tincidunt ligula.',
-        },
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac neque bibendum, vehicula ipsum et, tincidunt ligula.',
-        },
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac neque bibendum, vehicula ipsum et, tincidunt ligula.',
-        },
-        {
-          text:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac neque bibendum, vehicula ipsum et, tincidunt ligula.',
-        },
-      ],
-    },
-  ],
-};
+        phone: string;
+        tablet: string;
+        desktop: string;
+      };
+      altText: string;
+    }>;
+    textTiles: Array<{
+      title: string;
+      titleIconUrl: string;
+      listContent: Array<{
+        text: string;
+      }>;
+    }>;
+  };
+}
 
-export const FeaturedTiles: React.FC = () => {
+export const FeaturedTiles: React.FC<IFeaturedTilesProps> = ({ content }) => {
   const { photoTiles, textTiles } = content;
   return (
     <div className="row">
       {photoTiles &&
         photoTiles.map(({ imageUrls, altText }, i) => {
-          const images: PictureElement[] = [
+          const images: IPictureElement[] = [
             {
               breakpoint: breakpoints.xs,
               url: imageUrls.phone,
