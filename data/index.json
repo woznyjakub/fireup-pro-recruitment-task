@@ -1,0 +1,98 @@
+{
+  "featuredTiles": {
+    "photoTiles": [
+      {
+        "imageUrls": {
+          "phone": "/assets/images/eiffel-tower-phone.jpg",
+          "tablet": "/assets/images/eiffel-tower-tablet.jpg",
+          "desktop": "/assets/images/eiffel-tower-desktop.jpg"
+        },
+        "altText": "Eiffel Tower"
+      },
+      {
+        "imageUrls": {
+          "phone": "/assets/images/statue-of-liberty-phone.jpg",
+          "tablet": "/assets/images/statue-of-liberty-tablet.jpg",
+          "desktop": "/assets/images/statue-of-liberty-desktop.jpg"
+        },
+        "altText": "Statue of Liberty"
+      }
+    ],
+    "textTiles": [
+      {
+        "title": "Title",
+        "titleIconUrl": "/assets/images/edit.png",
+        "listContent": [
+          {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac neque bibendum, vehicula ipsum et, tincidunt ligula."
+          },
+          {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac neque bibendum, vehicula ipsum et, tincidunt ligula."
+          },
+          {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac neque bibendum, vehicula ipsum et, tincidunt ligula."
+          },
+          {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac neque bibendum, vehicula ipsum et, tincidunt ligula."
+          },
+          {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac neque bibendum, vehicula ipsum et, tincidunt ligula."
+          },
+          {
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ac neque bibendum, vehicula ipsum et, tincidunt ligula."
+          }
+        ]
+      }
+    ]
+  },
+  "gallery": {
+    "items": [
+      {
+        "id": 0,
+        "type": "angular",
+        "color": "lightblue",
+        "imageUrls": {
+          "phone": "/assets/images/gallery-1-phone.jpg",
+          "tablet": "/assets/images/gallery-1-tablet.jpg",
+          "desktop": "/assets/images/gallery-1-desktop.jpg",
+          "original": "/assets/images/gallery-1-original.jpg"
+        }
+      },
+      {
+        "id": 1,
+        "type": "angular",
+        "color": "orange",
+        "imageUrls": {
+          "phone": "/assets/images/gallery-2-phone.jpg",
+          "tablet": "/assets/images/gallery-2-tablet.jpg",
+          "desktop": "/assets/images/gallery-2-desktop.jpg",
+          "original": "/assets/images/gallery-2-original.jpg"
+        }
+      },
+      {
+        "id": 2,
+        "type": "round",
+        "color": "mint",
+        "imageUrls": {
+          "phone": "/assets/images/gallery-3-phone.jpg",
+          "tablet": "/assets/images/gallery-3-tablet.jpg",
+          "desktop": "/assets/images/gallery-3-desktop.jpg",
+          "original": "/assets/images/gallery-3-original.jpg"
+        },
+        "label": "BOX CAPTION"
+      },
+      {
+        "id": 3,
+        "type": "round",
+        "color": "pink",
+        "imageUrls": {
+          "phone": "/assets/images/gallery-4-phone.jpg",
+          "tablet": "/assets/images/gallery-4-tablet.jpg",
+          "desktop": "/assets/images/gallery-4-desktop.jpg",
+          "original": "/assets/images/gallery-4-original.jpg"
+        },
+        "label": "BOX CAPTION"
+      }
+    ]
+  }
+}
