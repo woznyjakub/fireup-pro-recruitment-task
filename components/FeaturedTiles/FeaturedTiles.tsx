@@ -1,6 +1,6 @@
 import styles from './FeaturedTiles.module.scss';
 import { Picture } from '@utils/Picture';
-import { breakpoints } from '@utils/breakpoints';
+import { Breakpoint } from '@utils/Breakpoint';
 import { IPictureElement } from '@entities/picture';
 
 export interface IFeaturedTilesProps {
@@ -31,15 +31,15 @@ export const FeaturedTiles: React.FC<IFeaturedTilesProps> = ({ content }) => {
         photoTiles.map(({ imageUrls, altText }, i) => {
           const images: IPictureElement[] = [
             {
-              breakpoint: breakpoints.xs,
+              breakpoint: Breakpoint.xs,
               url: imageUrls.phone,
             },
             {
-              breakpoint: breakpoints.md,
+              breakpoint: Breakpoint.md,
               url: imageUrls.tablet,
             },
             {
-              breakpoint: breakpoints.lg,
+              breakpoint: Breakpoint.lg,
               url: imageUrls.desktop,
               altText,
             },

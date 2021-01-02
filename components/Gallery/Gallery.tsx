@@ -1,5 +1,5 @@
 import styles from './Gallery.module.scss';
-import { breakpoints } from '@utils/breakpoints';
+import { Breakpoint } from '@utils/Breakpoint';
 import { Picture } from '@utils/Picture';
 import { IPictureElement } from '@entities/picture';
 
@@ -33,15 +33,15 @@ export const Gallery: React.FC<IGalleryProps> = ({ className, content }) => {
 
             const imagesData: IPictureElement[] = [
               {
-                breakpoint: breakpoints.xs,
+                breakpoint: Breakpoint.xs,
                 url: imageUrls.phone,
               },
               {
-                breakpoint: breakpoints.md,
+                breakpoint: Breakpoint.md,
                 url: imageUrls.tablet,
               },
               {
-                breakpoint: breakpoints.lg,
+                breakpoint: Breakpoint.lg,
                 url: imageUrls.desktop,
                 altText: label || `${type || ''} tile`,
               },
