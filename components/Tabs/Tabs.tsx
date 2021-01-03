@@ -1,5 +1,6 @@
-import { FC } from 'react';
+import { FC, useState, MouseEvent } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper as SwiperType } from 'swiper';
 import { useWindowSize } from '@hooks/useWindowSize';
 import { Breakpoint } from '@utils/Breakpoint';
 import styles from './Tabs.module.scss';
@@ -9,7 +10,7 @@ const content = {
     {
       label: 'BOX NAME 1',
       labelShort: '1',
-      buttonColor: 'orange',
+      buttonColor: 'lightblue',
       tabContent: {
         title: 'Text from box name 1',
         paragraphs: [
@@ -55,6 +56,13 @@ const content = {
 
 export const Tabs: FC = () => {
   const { width: windowWidth } = useWindowSize(true);
+  const [activeSlideIndex, setActiveSliceIndex] = useState<number>(0);
+  const [tabContentSlider, setTabContentSlider] = useState<SwiperType>(undefined);
+
+  const handleClick = (e: MouseEvent<HTMLButtonElement>, index) => {
+    tabContentSlider.slideTo(index);
+    setActiveSliceIndex(index);
+  };
 
   return (
     <div className={styles.mainWrapper}>
@@ -62,7 +70,7 @@ export const Tabs: FC = () => {
       {content.tabs.length && (
         <div className={styles.sliderWrapper}>
           <div className={styles.sliderPostionWrapper}>
-            <Swiper className={styles.slider}>
+            <Swiper className={styles.slider} onInit={(swiper: SwiperType) => setTabContentSlider(swiper)} allowTouchMove={false}>
               {content.tabs.map(({ tabContent: { title, paragraphs } }) => {
                 return (
                   <SwiperSlide key={title} className={styles.sliderItem}>
@@ -83,28 +91,24 @@ export const Tabs: FC = () => {
       )}
 
       {/* tab buttons */}
-      {content.tabs.length && (
-        <>
-          {content.tabs.map(({ label, labelShort, buttonColor }, i, array) => {
-            const ssrValue = label;
-            const isFirst = i === 0;
+      {content.tabs.length &&
+        content.tabs.map(({ label, labelShort, buttonColor }, i, array) => {
+          const ssrValue = label;
+          const isActive = i === activeSlideIndex;
 
-            // calculate if a button should be placed over the tabs content
-            const isOver = i < array.length / 2 && windowWidth >= Breakpoint.md;
+          // calculate if a button should be placed over the tabs content
+          const isOver = i < array.length / 2 && windowWidth >= Breakpoint.md;
 
-            return (
-              <button
-                key={labelShort}
-                className={[styles.button, `bg-${buttonColor}`, isFirst ? styles.active : '', isOver ? styles.over : ''].join(
-                  ' ',
-                )}
-              >
-                {windowWidth ? (windowWidth >= Breakpoint.md ? label : labelShort) : ssrValue}
-              </button>
-            );
-          })}
-        </>
-      )}
+          return (
+            <button
+              key={labelShort}
+              onClick={(e) => handleClick(e, i)}
+              className={[styles.button, `bg-${buttonColor}`, isActive ? styles.active : '', isOver ? styles.over : ''].join(' ')}
+            >
+              {windowWidth ? (windowWidth >= Breakpoint.md ? label : labelShort) : ssrValue}
+            </button>
+          );
+        })}
     </div>
   );
 };

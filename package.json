@@ -9,6 +9,7 @@
     "format": "yarn prettier --write --ignore-unknown \"**\""
   },
   "dependencies": {
+    "@types/swiper": "^5.4.1",
     "bootstrap": "^5.0.0-beta1",
     "next": "10.0.3",
     "react": "17.0.1",
