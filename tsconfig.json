@@ -18,6 +18,7 @@
       "@components/*": ["components/*"],
       "@data/*": ["data/*"],
       "@entities/*": ["entities/*"],
+      "@hooks/*": ["hooks/*"],
       "@utils/*": ["utils/*"]
     }
   },
