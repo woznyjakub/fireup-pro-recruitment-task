@@ -1,0 +1,130 @@
+@import '../../styles/mixins';
+
+.mainWrapper {
+  position: sticky;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 20000;
+  background-color: $white;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoWrapper {
+  padding: 0.5rem 2rem 0.5rem 0;
+}
+.logo {
+  display: block;
+  max-width: 100%;
+  height: auto;
+
+  max-height: 40px;
+}
+
+.menuWrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  transform: translateX(-100%);
+  opacity: 0;
+  background-color: $white;
+
+  will-change: opacity;
+  transition: opacity 0.3s;
+  &.active {
+    transform: none;
+    opacity: 1;
+  }
+}
+.menuItem {
+  text-align: center;
+  padding: 1rem;
+  color: $grey-1;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+  background-color: transparent;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: var(--bg-color);
+    opacity: 0.9;
+    z-index: -1;
+  }
+  &.active {
+    color: $white;
+  }
+}
+@include media-breakpoint-up(md) {
+  .wrapper {
+    align-items: stretch;
+  }
+  .logoWrapper {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  .logo {
+    max-height: 64px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .menuWrapper {
+    display: flex;
+    position: static;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .menu {
+    display: flex;
+  }
+  .menuItem {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    color: $grey-5;
+    will-change: color;
+    transition: color 0.3s;
+    &::before {
+      top: -0.5rem;
+      opacity: 0;
+      will-change: opacity;
+      transition: opacity 0.3s;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+      bottom: -0.5rem;
+      background-color: $grey-4;
+      opacity: 0;
+      will-change: opacity;
+      transition: opacity 0.3s;
+    }
+
+    &.active,
+    &:hover {
+      color: $white;
+      &::before {
+        opacity: 0.8;
+      }
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}

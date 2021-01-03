@@ -440,8 +440,10 @@ textarea {
   padding: 0.2em 0;
 }
 
-a:link {
+a:link,
+a[href] {
   text-decoration: none;
+  color: inherit;
 }
 
 button {
