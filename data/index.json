@@ -50,7 +50,7 @@
       {
         "id": 0,
         "type": "angular",
-        "color": "lightblue",
+        "color": "paleblue",
         "imageUrls": {
           "phone": "/assets/images/gallery-1-phone.jpg",
           "tablet": "/assets/images/gallery-1-tablet.jpg",

@@ -4,11 +4,37 @@ import { Tabs } from '@components/Tabs';
 import { Section } from '@components/common/Section';
 import { Gallery } from '@components/Gallery/';
 import { FeaturedTiles } from '@components/FeaturedTiles';
+import { MainNavigation } from '@components/MainNavigation';
 import content from '@data/index.json';
+
+const menuItems = [
+  {
+    label: 'Home',
+    link: '/',
+    color: 'yellow',
+    isActive: true,
+  },
+  {
+    label: 'Menu 2',
+    link: '/',
+    color: 'red',
+  },
+  {
+    label: 'Menu 3',
+    link: '/',
+    color: 'green',
+  },
+  {
+    label: 'Pogoda',
+    link: '/',
+    color: 'paleblue',
+  },
+];
 
 const Home: React.FC = () => {
   return (
     <Page Header={MainHeader} title="Main page">
+      <MainNavigation logo={{ url: '/assets/images/logo.jpg', name: 'fireup.pro' }} menuItems={menuItems} />
       <Section className="bg-grey-2">
         <Tabs content={content.tabs} />
       </Section>
