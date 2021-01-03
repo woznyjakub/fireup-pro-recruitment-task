@@ -2,5 +2,6 @@
 
 .section {
   position: relative;
-  background: 50% 50% / cover;
+  background-position: 50% 50%;
+  background-size: cover;
 }
