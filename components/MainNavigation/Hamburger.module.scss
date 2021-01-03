@@ -1,0 +1,76 @@
+@import '../../styles/mixins';
+
+.hamburger {
+  $subelement-height: 6px;
+
+  padding: 0.5rem;
+  margin-right: -0.5rem;
+  background-color: transparent;
+  border: 0;
+  .linesWrapper {
+    position: relative;
+    display: block;
+    width: 38px;
+    height: 30px;
+  }
+  .line {
+    position: absolute;
+    left: 0;
+
+    width: 100%;
+    height: $subelement-height;
+    background-color: $grey-1;
+
+    $transition-duration: 0.3s;
+
+    &:nth-child(1) {
+      top: 0;
+      will-change: transform;
+      transition: transform $transition-duration;
+    }
+    &:nth-child(2) {
+      top: calc(50% - #{$subelement-height / 2});
+      will-change: opacity;
+      transition: opacity $transition-duration;
+    }
+    &:nth-child(3) {
+      top: calc(100% - #{$subelement-height});
+      will-change: transform;
+      transition: transform $transition-duration;
+    }
+  }
+
+  &.active {
+    .line {
+      $rotation: 45deg;
+      top: calc(50% - #{$subelement-height / 2});
+      &:nth-child(1) {
+        transform: rotate($rotation * -1);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:nth-child(3) {
+        transform: rotate($rotation);
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .hamburger {
+    .linesWrapper {
+      width: 64px;
+      height: 50px;
+    }
+    .line {
+      height: 10px;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .hamburger {
+    display: none;
+  }
+}
