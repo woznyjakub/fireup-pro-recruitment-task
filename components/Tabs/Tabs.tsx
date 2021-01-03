@@ -1,12 +1,15 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useWindowSize } from '@hooks/useWindowSize';
 import { Breakpoint } from '@utils/Breakpoint';
+import styles from './Tabs.module.scss';
 
 const content = {
   tabs: [
     {
       label: 'BOX NAME 1',
       labelShort: '1',
+      buttonColor: 'orange',
       tabContent: {
         title: 'Text from box name 1',
         paragraphs: [
@@ -17,6 +20,7 @@ const content = {
     {
       label: 'BOX NAME 2',
       labelShort: '2',
+      buttonColor: 'red',
       tabContent: {
         title: 'Text from box name 2',
         paragraphs: [
@@ -27,6 +31,7 @@ const content = {
     {
       label: 'BOX NAME 3',
       labelShort: '3',
+      buttonColor: 'yellow',
       tabContent: {
         title: 'Text from box name 3',
         paragraphs: [
@@ -37,6 +42,7 @@ const content = {
     {
       label: 'BOX NAME 4',
       labelShort: '4',
+      buttonColor: 'green',
       tabContent: {
         title: 'Text from box name 4',
         paragraphs: [
@@ -48,39 +54,56 @@ const content = {
 };
 
 export const Tabs: FC = () => {
-  const isWindowDefined = typeof window !== 'undefined';
+  const { width: windowWidth } = useWindowSize(true);
 
   return (
-    <div>
+    <div className={styles.mainWrapper}>
       {/* tab content */}
       {content.tabs.length && (
-        <Swiper>
-          {content.tabs.map(({ tabContent: { title, paragraphs } }) => {
-            return (
-              <SwiperSlide key={title}>
-                <div>
-                  <h3>{title}</h3>
-                  <div>
-                    {paragraphs.map((text) => (
-                      <p>{text}</p>
-                    ))}
-                  </div>
-                </div>
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+        <div className={styles.sliderWrapper}>
+          <div className={styles.sliderPostionWrapper}>
+            <Swiper className={styles.slider}>
+              {content.tabs.map(({ tabContent: { title, paragraphs } }) => {
+                return (
+                  <SwiperSlide key={title} className={styles.sliderItem}>
+                    <div>
+                      <h3 className="basic-heading color-blue pb-1">{title}</h3>
+                      <div className="basic-text">
+                        {paragraphs.map((text) => (
+                          <p key={text}>{text}</p>
+                        ))}
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </div>
+        </div>
       )}
 
       {/* tab buttons */}
       {content.tabs.length && (
-        <div>
-          {content.tabs.map(({ label, labelShort, tabContent }) => {
+        <>
+          {content.tabs.map(({ label, labelShort, buttonColor }, i, array) => {
+            const ssrValue = label;
+            const isFirst = i === 0;
+
+            // calculate if a button should be placed over the tabs content
+            const isOver = i < array.length / 2 && windowWidth >= Breakpoint.md;
+
             return (
-              <button key={labelShort}>{(isWindowDefined && window.innerWidth) >= Breakpoint.lg ? label : labelShort}</button>
+              <button
+                key={labelShort}
+                className={[styles.button, `bg-${buttonColor}`, isFirst ? styles.active : '', isOver ? styles.over : ''].join(
+                  ' ',
+                )}
+              >
+                {windowWidth ? (windowWidth >= Breakpoint.md ? label : labelShort) : ssrValue}
+              </button>
             );
           })}
-        </div>
+        </>
       )}
     </div>
   );

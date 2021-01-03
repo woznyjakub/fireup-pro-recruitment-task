@@ -1,0 +1,105 @@
+@import '../../styles/mixins';
+$border: 1px solid $blue;
+.mainWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.sliderPostionWrapper {
+  position: relative;
+  max-width: 100%;
+}
+.sliderWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.slider {
+  width: 100%;
+  border: $border;
+}
+.sliderItem {
+  background: $white url('/assets/images/city.jpg') 50% 100% / cover;
+  padding: 0.5rem #{$grid-gutter-width / 2};
+  min-height: 150px; // prevent cutting bg image top
+
+  height: auto; // this forces all slides the same height as the tallest one
+}
+
+.button {
+  border: 1px solid transparent;
+  border-top-style: none;
+  font-size: 2rem;
+  color: $white;
+  padding: 0.75rem 1.3125rem;
+
+  margin-top: -1px;
+  will-change: background-color, color, border-color;
+  transition: background-color 0.1s, color 0.1s, border-color 0.1s;
+  &.active {
+    z-index: 1;
+    background-color: $grey-2;
+    color: $blue;
+    border-color: $blue;
+  }
+  &.over {
+    order: -1;
+    border-top-style: solid;
+    border-bottom-style: none;
+    margin-top: 0;
+    margin-bottom: -1px;
+    &.active {
+      background-color: $white;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .button {
+    padding: 1.5rem 2rem;
+    font-weight: 300;
+    &.active {
+      // font-weight: 400;
+      text-shadow: 0 0 1px currentColor, 0 0 1px currentColor, 0 0 1px currentColor, 0 0 1px currentColor, 0 0 1px currentColor;
+    }
+  }
+  .sliderItem {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .sliderWrapper {
+    margin: -40px 0;
+  }
+  .slider {
+    max-width: 590px;
+    margin: 0 auto;
+
+    background-size: 105%;
+    background-repeat: repeat-x;
+    position: static;
+    z-index: 2;
+
+    border-style: none;
+    &::after {
+      content: '';
+      position: absolute;
+      left: -1px;
+      right: -1px;
+      top: -1px;
+      bottom: -1px;
+      background-color: $blue;
+      z-index: -1;
+    }
+  }
+  .button {
+    font-size: 2.5rem;
+    z-index: 0;
+    &.active {
+      border-style: solid;
+      margin: 0;
+      z-index: 0;
+    }
+  }
+}
