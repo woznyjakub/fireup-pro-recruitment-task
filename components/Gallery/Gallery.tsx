@@ -29,7 +29,6 @@ export const Gallery: FC<IGalleryProps> = ({ className, content }) => {
   const { items } = content;
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [slider, setSlider] = useState<SwiperType>(undefined);
-  console.log('slider', slider);
 
   const handleOpenPopup = (e: MouseEvent<HTMLButtonElement>, index: number) => {
     setIsModalOpen(true);

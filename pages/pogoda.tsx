@@ -4,7 +4,7 @@ import { Page } from '@components/common/Page';
 import { MainNavigation } from '@components/MainNavigation';
 
 const API_KEY = process.env.WEATHER_API_KEY;
-console.log('API_KEY', API_KEY);
+
 const menuItems = [
   {
     label: 'Home',
@@ -104,7 +104,6 @@ const WeatherPage: React.FC = () => {
     [searchedValue],
   );
 
-  console.log('searchedValue', searchedValue);
   return (
     <Page>
       <MainNavigation logo={{ url: '/assets/images/logo.jpg', name: 'fireup.pro' }} menuItems={menuItems} />
