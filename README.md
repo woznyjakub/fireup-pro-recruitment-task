@@ -1,3 +1,5 @@
+This project uses React.js, Next.js, SCSS modules with Bootstrap 5 beta (only grid), Swiper.js and react-modal.
+
 ## Commands
 
 To start development use:
