@@ -1,4 +1,5 @@
 import { FC, useCallback, useState } from 'react';
+import Link from 'next/link';
 import Hamburger from './Hamburger';
 import styles from './MainNavigation.module.scss';
 
@@ -40,12 +41,12 @@ export const MainNavigation: FC<MainNavigationProps> = ({ logo, menuItems = [] }
           {menuItems.length && (
             <nav className={[styles.menuWrapper, isMenuOpen ? styles.active : ''].join(' ')}>
               <ul className={styles.menu}>
-                {menuItems.map(({ label, link: url, color, isActive }) => {
+                {menuItems.map(({ label, link, color, isActive }) => {
                   return (
-                    <li className={[styles.menuItem, `bg-${color}`, isActive ? styles.active : ''].join(' ')}>
-                      <a href={url} className={styles.menuLink}>
-                        {label}
-                      </a>
+                    <li key={label} className={[styles.menuItem, `bg-${color}`, isActive ? styles.active : ''].join(' ')}>
+                      <Link href={link} passHref>
+                        <a className={styles.menuLink}>{label}</a>
+                      </Link>
                     </li>
                   );
                 })}

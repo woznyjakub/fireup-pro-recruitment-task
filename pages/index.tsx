@@ -16,17 +16,17 @@ const menuItems = [
   },
   {
     label: 'Menu 2',
-    link: '/',
+    link: '/menu-3',
     color: 'red',
   },
   {
     label: 'Menu 3',
-    link: '/',
+    link: '/menu-3',
     color: 'green',
   },
   {
     label: 'Pogoda',
-    link: '/',
+    link: '/pogoda',
     color: 'paleblue',
   },
 ];
