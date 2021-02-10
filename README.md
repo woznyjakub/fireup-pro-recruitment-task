@@ -20,4 +20,10 @@ To run built project use:
 yarn start
 ```
 
+## Environment variables
+
+```
+WEATHER_API_KEY
+```
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
